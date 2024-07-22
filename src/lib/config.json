@@ -1,0 +1,5 @@
+{
+	"secret": ["secretText1", "secretText2"],
+	"otptime": 5,
+	"secretpass": false
+}
