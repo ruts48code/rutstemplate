@@ -5,7 +5,7 @@ import { handler } from './build/handler.js';
 import polka from 'polka';
 
 const cpu = availableParallelism();
-const port = process.env.PORT || 80
+const port = process.env.PORT || 80;
 if (cluster.isPrimary) {
 	console.log(`Primary ${process.pid} is running`);
 	for (let i = 0; i < cpu; i++) {
