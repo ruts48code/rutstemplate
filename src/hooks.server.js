@@ -21,7 +21,6 @@ export const handle = async ({ event, resolve }) => {
 				)
 			) {
 				elog('(error) Wrong OTP');
-				elog(`(error) OTP is ${event.request.headers.get('otp')}`);
 				return new Response(null, {
 					status: 403
 				});
