@@ -3,6 +3,7 @@ import conf from '$lib/config.json';
 import { elog } from '$lib/lib_elog.js';
 
 export const handle = async ({ event, resolve }) => {
+	let apiFunc;
 	event.locals.secret = conf.secret;
 	if (event.url.pathname.startsWith('/api')) {
 		if (event.request.method === 'OPTIONS') {
@@ -20,7 +21,7 @@ export const handle = async ({ event, resolve }) => {
 					(event.request.headers.get('otp') == conf.secret[0] && conf.secretpass)
 				)
 			) {
-				elog('(error) Wrong OTP');
+				elog(`(error) Wrong OTP is ${event.request.headers.get('otp')}`);
 				return new Response(null, {
 					status: 403
 				});
@@ -28,7 +29,9 @@ export const handle = async ({ event, resolve }) => {
 		}
 	}
 
-	elog(`(${event.request.method}) - ${event.url.pathname}`);
+	if (!event.url.pathname.startsWith('/api')) {
+		elog(`(${event.request.method}) - ${event.url.pathname}`);
+	}
 	const response = await resolve(event);
 	if (event.url.pathname.startsWith('/api')) {
 		response.headers.append('Access-Control-Allow-Origin', `*`);
