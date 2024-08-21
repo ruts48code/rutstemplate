@@ -16,6 +16,6 @@ export const api = async (d) => {
 	).json();
 };
 
-export const DB = async (dbs, query, items) => {
+export const db = async (dbs, query, items) => {
 	return await queryDB(dbs, query, items);
 };
