@@ -1,5 +1,6 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { OTP } from 'rutsotp';
+import { queryDB } from 'rutsdb';
 import conf from '$lib/config.json';
 
 export const api = async (d) => {
@@ -13,4 +14,8 @@ export const api = async (d) => {
 			}
 		})
 	).json();
+};
+
+export const DB = async (dbs, query, items) => {
+	return await queryDB(dbs, query, items);
 };

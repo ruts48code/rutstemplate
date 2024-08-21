@@ -22,6 +22,7 @@
 	"type": "module",
 	"dependencies": {
 		"polka": "^0.5.2",
+		"rutsdb": "https://github.com/ruts48code/rutsdb",
 		"rutsotp": "https://github.com/ruts48code/rutsotp"
 	}
 }
